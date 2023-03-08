@@ -15,6 +15,12 @@ body {
     grid-column-gap: 5px;
     grid-row-gap: 5px;
     border: 1px black solid;
+    font-weight: bold;
+    padding: 5px;
+}
+
+.calcBody > button {
+    font-size: 25px;
 }
 
 .display {
