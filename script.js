@@ -10,7 +10,10 @@ function operate(operator, a, b) {
   } else if (operator === "*") {
     return a * b;
   } else if (operator === "/") {
-    return a / b;
+    if (b == 0) {
+        return "It's Over 9000!"
+    }else {return a / b;}
+    
   }
 }
 console.log(document.querySelector(".display").value);
@@ -33,8 +36,12 @@ buttonArray.forEach((item) => {
         display(firstNumber);
       } 
     } else {
-      let maths = operate(operator, Number(firstNumber), Number(secondNumber));
-      display(maths);
+        if (firstNumber && secondNumber && operator){
+      let solution = operate(operator, Number(firstNumber), Number(secondNumber));
+      display(solution);
+        } else {
+            display("ERROR");
+        }
     }
   });
 });
