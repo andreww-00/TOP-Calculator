@@ -23,7 +23,7 @@ let displayValue = [];
 
 buttonArray.forEach((item) => {
   item.addEventListener("click", (e) => {
-    if (!(item.value == "equate")) {
+    if (!(item.value == "equate") && !(item.value == "clear")) {
       if (item.getAttribute("class") == "operator") {
         operator = item.value;
         displayValue = [];
