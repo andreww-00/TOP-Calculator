@@ -20,9 +20,10 @@ console.log(document.querySelector(".display").value);
 let button = document.querySelectorAll("button");
 let buttonArray = [...button];
 let displayValue = [];
+
 buttonArray.forEach((item) => {
   item.addEventListener("click", (e) => {
-    if (!(item.value == "equate")) {
+    if (!(item.value == "equate") && !(item.value == "clear")) {
       if (item.getAttribute("class") == "operator") {
         operator = item.value;
         displayValue = [];
@@ -35,13 +36,19 @@ buttonArray.forEach((item) => {
         firstNumber = displayValue.join("");
         display(firstNumber);
       } 
-    } else {
+    } else if (item.value == "equate") {
         if (firstNumber && secondNumber && operator){
       let solution = operate(operator, Number(firstNumber), Number(secondNumber));
       display(solution);
         } else {
             display("ERROR");
         }
+    } else if (item.value == "clear") {
+        displayValue = [];
+        firstNumber = null;
+        secondNumber = null;
+        operator = null;
+        display("");
     }
   });
 });
@@ -57,11 +64,3 @@ function clear() {
   console.log(display + "from clear funntion");
   document.body.div.appendChild(display);
 }
-//run through of logic
-
-//first number is entered and saved
-//operated is assigned and saved
-//second number is entered,
-//this should update the text on the calculator
-// value is also saved
-// pressing enter runs the operation and returns a value
