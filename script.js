@@ -81,9 +81,3 @@ function clear() {
   document.body.div.appendChild(display);
 }
 
-//Logic Run through
-//Clicking number assigns firstnumber and displays it
-//clicking an operator assigns it doesnt update display
-//clicking another number stores it as Second number
-//hitting equals opperates and returns a solution variable
-//if you instead hit an operator displays solution, and assigns solution to first number as well as the new operator.
