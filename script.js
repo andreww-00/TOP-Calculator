@@ -1,6 +1,7 @@
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
+let result = null;
 
 function operate(operator, a, b) {
   if (operator === "+") {
@@ -11,9 +12,10 @@ function operate(operator, a, b) {
     return a * b;
   } else if (operator === "/") {
     if (b == 0) {
-        return "It's Over 9000!"
-    }else {return a / b;}
-    
+      return "It's Over 9000!";
+    } else {
+      return a / b;
+    }
   }
 }
 console.log(document.querySelector(".display").value);
@@ -25,6 +27,11 @@ buttonArray.forEach((item) => {
   item.addEventListener("click", (e) => {
     if (!(item.value == "equate") && !(item.value == "clear")) {
       if (item.getAttribute("class") == "operator") {
+        if (firstNumber && secondNumber) {
+          result = operate(operator, Number(firstNumber), Number(secondNumber));
+          operator = item.value;
+          quickDisplay(result);
+        }
         operator = item.value;
         displayValue = [];
       } else if (firstNumber && operator) {
@@ -35,20 +42,20 @@ buttonArray.forEach((item) => {
         displayValue.push(item.value);
         firstNumber = displayValue.join("");
         display(firstNumber);
-      } 
+      }
     } else if (item.value == "equate") {
-        if (firstNumber && secondNumber && operator){
-      let solution = operate(operator, Number(firstNumber), Number(secondNumber));
-      display(solution);
-        } else {
-            display("ERROR");
-        }
+      if (firstNumber && secondNumber && operator) {
+        result = operate(operator, Number(firstNumber), Number(secondNumber));
+        display(result);
+      } else {
+        display("ERROR");
+      }
     } else if (item.value == "clear") {
-        displayValue = [];
-        firstNumber = null;
-        secondNumber = null;
-        operator = null;
-        display("");
+      displayValue = [];
+      firstNumber = null;
+      secondNumber = null;
+      operator = null;
+      display("");
     }
   });
 });
@@ -58,9 +65,25 @@ function display(number) {
   display.textContent = number;
   document.body.div.appendChild(display);
 }
+function quickDisplay(number) {
+  const display = document.querySelector(".display");
+  display.textContent = number;
+  firstNumber = result;
+  result = null;
+  secondNumber = null;
+  displayValue = [];
+  document.body.div.appendChild(display);
+}
 function clear() {
   const display = document.querySelector(".display");
   display.textContent = "";
   console.log(display + "from clear funntion");
   document.body.div.appendChild(display);
 }
+
+//Logic Run through
+//Clicking number assigns firstnumber and displays it
+//clicking an operator assigns it doesnt update display
+//clicking another number stores it as Second number
+//hitting equals opperates and returns a solution variable
+//if you instead hit an operator displays solution, and assigns solution to first number as well as the new operator.
