@@ -2,8 +2,91 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: auto;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow: auto;
+    animation: gradient 30s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+header {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header > h1 {
+    margin: 0px;
+}
+
+header > h3 {
+    margin: 0px;
+    margin-bottom: 50px;
+}
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
 }
 
 .calcBody {
@@ -16,11 +99,21 @@ body {
     grid-row-gap: 5px;
     border: 1px black solid;
     font-weight: bold;
-    padding: 5px;
+    padding: 8px;
+    background-color: black;
+    border-radius: 7px;
 }
 
 .calcBody > button {
     font-size: 25px;
+}
+
+.operator {
+    background-color: orange;
+}
+
+.clear {
+    background-color: lightcoral;
 }
 
 .display {
@@ -37,4 +130,15 @@ body {
 .zero {
     grid-column-start: 1;
     grid-column-end: span 2;
+}
+
+
+button {
+    background-color: lightblue;
+    border-radius: 5px;
+    border-color: black;
+}
+
+.display {
+    background-color: lightgray;
 }
