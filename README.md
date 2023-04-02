@@ -7,3 +7,5 @@ using HTML/CSS.
 
 Enjoy,
 Andrew Webster.
+
+P.S - Percent, negative, and decimal button currently do not work. There is also an overflow bug for longer numbers.
